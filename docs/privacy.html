@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Privacy Policy — PagePerfect</title>
-<meta name="description" content="PagePerfect collects nothing. No account, no analytics, no ads, no uploads. The app has no internet permission.">
+<meta name="description" content="PagePerfect collects nothing. No account, no analytics, no ads, no uploads. The only network call is an update check.">
 <meta name="theme-color" content="#0b1020">
 <style>
   :root{--bg:#0b1020;--card:#161f3d;--line:#243055;--text:#e8edff;--muted:#9aa6c9;--accent2:#22d3a6}
@@ -39,13 +39,14 @@
 
   <div class="box">
     <strong>Short version:</strong> PagePerfect collects no data. It has no account system,
-    no analytics, no advertising, and no internet permission. Every scan, image and PDF
-    stays in the app's private storage on your device.
+    no analytics and no advertising. Every scan, image and PDF stays in the app's private
+    storage on your device. The app makes exactly one kind of network request: asking which
+    version is current so it can update itself.
   </div>
 
   <h2>1. Who we are</h2>
   <p>
-    PagePerfect is a free, open-source document scanner application for Android.
+    PagePerfect is a free document scanner application for Android.
     This policy covers the PagePerfect Android application and this website.
   </p>
 
@@ -61,6 +62,7 @@
       <tr><td>Contacts</td><td>No</td></tr>
       <tr><td>Device identifiers / advertising ID</td><td>No</td></tr>
       <tr><td>Usage analytics or crash reports</td><td>No</td></tr>
+      <tr><td>Anything sent during an update check</td><td>No — the request carries no identifier</td></tr>
       <tr><td>Cookies (app)</td><td>No</td></tr>
     </tbody>
   </table>
@@ -70,11 +72,17 @@
     <li><b>Camera</b> — required to scan documents. Frames are processed on-device in memory.</li>
     <li><b>Photos / media (read)</b> — only if you choose to import an existing image.</li>
     <li><b>Storage (write)</b> — only to save the PDF or image you asked for.</li>
+    <li><b>Internet</b> — used for one thing: checking for a new version and downloading
+        its update. The request carries no account, no device identifier and nothing about
+        your documents.</li>
+    <li><b>Install unknown apps</b> — lets the app hand a downloaded update to Android's own
+        installer. You can revoke it at any time in Settings.</li>
   </ul>
   <p>
-    The application does <b>not</b> declare the <code>INTERNET</code> permission. Without it, the
-    operating system blocks all network access at the kernel level — the app cannot transmit
-    data even if it wanted to.
+    PagePerfect does not upload documents. There is no cloud sync, no backup service, no
+    analytics and no crash reporting in the application. The only hosts contacted are
+    <code>hypergrx7-droid.github.io</code> (a small version file) and
+    <code>github.com</code> (the update APK, if you accept an update).
   </p>
 
   <h2>4. Where your documents live</h2>
@@ -109,11 +117,16 @@
     <a href="https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement">GitHub's privacy statement</a>.
     This website is hosted on a static host and sets no cookies and runs no analytics.
   </p>
+  <p>
+    When the app starts it fetches <code>version.json</code> from this site. That file holds a
+    version number and a download link. The request includes no user data. If a newer version
+    exists, the app downloads the APK from GitHub Releases and asks Android to install it.
+    If the check fails — no connection, server down — the app simply opens and works normally.
+  </p>
 
   <h2>9. Changes to this policy</h2>
   <p>
-    If this policy ever changes, the "last updated" date above will change and the diff will be
-    visible in the public source repository.
+    If this policy ever changes, the "last updated" date above will change.
   </p>
 
   <h2>10. Contact</h2>

@@ -216,14 +216,15 @@
     <div class="privacy">
       <h3>🔒 Privacy in one sentence</h3>
       <p style="color:var(--muted);font-size:15px">
-        The app has no internet permission at all. It physically cannot send your documents anywhere.
+        Your scans never leave the phone. The only network call the app ever makes is
+        "is there a newer version?".
       </p>
       <ul>
         <li>No account, no login, no email</li>
         <li>No analytics, no crash reporting SDKs</li>
         <li>No ads, no advertising ID</li>
         <li>All images and PDFs stay in the app's private storage on your phone</li>
-        <li>Nothing leaves the device — not even a crash report</li>
+        <li>Network is used for one thing only: the update check and its download</li>
       </ul>
     </div>
   </div>
@@ -233,36 +234,49 @@
   <div class="wrap">
     <div class="kicker">Download</div>
     <h2>Get the APK</h2>
-    <p class="lead">Pick the build that matches your phone. If you're not sure, take the universal one.</p>
+    <p class="lead">One file. Works on every Android phone. No "which one do I pick?".</p>
 
-    <div class="grid">
-      <div class="card">
-        <h3>ARM64 · 20.3 MB</h3>
-        <p style="margin-bottom:16px">Phones from ~2017 onwards. Smallest download — start here.</p>
-        <a class="btn btn-primary" href="https://github.com/hypergrx7-droid/PAGE-PERFETT/releases/latest">Download</a>
+    <div style="background:var(--card);border:1px solid var(--line);border-radius:18px;padding:32px;text-align:center">
+      <div style="font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent2);font-weight:700">Latest version</div>
+      <div style="font-size:34px;font-weight:800;letter-spacing:-1px;margin:8px 0 4px">PagePerfect <span id="ver">1.2.0</span></div>
+      <div style="color:var(--muted);font-size:14px;margin-bottom:22px">
+        42.5 MB · Android 7.0+ · 64-bit and 32-bit phones
       </div>
-      <div class="card">
-        <h3>Universal · 57.8 MB</h3>
-        <p style="margin-bottom:16px">Works on every Android phone, all CPU types. Slightly bigger.</p>
-        <a class="btn btn-ghost" href="https://github.com/hypergrx7-droid/PAGE-PERFETT/releases/latest">Download</a>
-      </div>
-      <div class="card">
-        <h3>ARMv7 · 18.3 MB</h3>
-        <p style="margin-bottom:16px">32-bit devices, older budget phones.</p>
-        <a class="btn btn-ghost" href="https://github.com/hypergrx7-droid/PAGE-PERFETT/releases/latest">Download</a>
-      </div>
+      <a class="btn btn-primary" style="font-size:17px;padding:16px 34px"
+         href="https://github.com/hypergrx7-droid/PAGE-PERFETT/releases/latest/download/app-release.apk">
+        Download APK
+      </a>
+      <p style="color:var(--muted);font-size:12.5px;margin-top:16px">
+        Direct download, no redirect page. You only do this once — after that the
+        app updates itself.
+      </p>
     </div>
 
     <div style="margin-top:32px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:24px">
       <h3 style="font-size:16px;margin-bottom:12px">How to install</h3>
       <ol style="color:var(--muted);font-size:14px;padding-left:20px">
-        <li>Tap the download link and wait for the file to finish.</li>
+        <li>Tap <b>Download APK</b> and wait for the file to finish.</li>
         <li>Open it. Android will say "For your security, your phone is not allowed to install unknown apps from this source."</li>
         <li>Tap <b>Settings</b> → enable <b>Allow from this source</b> → go back.</li>
         <li>Tap <b>Install</b>.</li>
       </ol>
       <p style="color:var(--muted);font-size:13px;margin-top:12px">
         This is normal for any app installed outside a store. You can revoke the permission right after installing.
+      </p>
+    </div>
+
+    <div style="margin-top:20px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:24px">
+      <h3 style="font-size:16px;margin-bottom:12px">🔄 Updates happen inside the app</h3>
+      <p style="color:var(--muted);font-size:14px;line-height:1.6">
+        You never have to come back to this page. When a new version is published,
+        the app shows an update screen the next time you open it, downloads the new
+        APK itself and hands it straight to the Android installer. Your documents,
+        folders and tags are kept.
+      </p>
+      <p style="color:var(--muted);font-size:13px;line-height:1.6;margin-top:10px">
+        While an update is pending the app stays locked, so everyone is always on the
+        current version. If the phone is offline the app opens normally — an offline
+        scanner must never be blocked by a network check.
       </p>
     </div>
   </div>
@@ -280,13 +294,16 @@
       <p>Google charges a one-time developer registration fee. Until that's paid, the APK is published directly on GitHub Releases. You get the exact same app.</p></details>
 
     <details><summary>Do you collect my documents?</summary>
-      <p>No. The app doesn't even request the internet permission, so it cannot transmit anything. Everything stays in local storage on your device.</p></details>
+      <p>No. Your scans, folders and notes never leave the phone. The app's only network call is to a small version file that says which build is current — no document, image, file name or identifier is sent with it.</p></details>
 
     <details><summary>Will it work on my phone?</summary>
-      <p>Android 7.0 (API 24) and newer. That covers essentially every phone still in use.</p></details>
+      <p>Android 7.0 (API 24) and newer, 64-bit or 32-bit. One APK covers all of them.</p></details>
 
     <details><summary>Is the APK safe?</summary>
-      <p>Every APK here is built from the same fixed source tree by an automated pipeline, then checked before publishing: the package id must be <code>com.pageperfect.app</code> and the app must not declare the <code>INTERNET</code> permission. You can verify that yourself on any Android phone with any APK inspector.</p></details>
+      <p>Every APK is built from the same fixed source tree by an automated pipeline, then checked before publishing: the package id must be <code>com.pageperfect.app</code>, it must be signed with the PagePerfect release key, and it must not declare camera-audio, contacts, location or advertising permissions. You can inspect any APK yourself with an APK analyser.</p></details>
+
+    <details><summary>Do I have to download a new APK for every update?</summary>
+      <p>No. Open the app and it tells you when a new version exists, downloads it and installs it over the old one. Your documents are kept. You only download an APK by hand this once.</p></details>
 
     <details><summary>Does it scan both sides of a page?</summary>
       <p>Yes. Two modes: a flip prompt for short documents, and batch mode where you scan all fronts, flip the stack, then scan all backs — it pairs them in the right order automatically.</p></details>
