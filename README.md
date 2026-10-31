@@ -1,7 +1,8 @@
 # PagePerfect — Free Document Scanner
 
 A free, offline, ad-free document scanner for Android.
-Auto crop · auto lighting · both-side scan · exact A4 PDF · ID card mode.
+Auto crop · auto lighting · both-side scan · exact A4 PDF · ID card mode ·
+folders · tags · search · trash.
 
 **No ads. No subscription. No account. No internet permission.**
 
@@ -13,10 +14,10 @@ Auto crop · auto lighting · both-side scan · exact A4 PDF · ID card mode.
 
 | File | Size | Use if |
 |---|---|---|
-| `app-arm64-v8a-release.apk` | 20.2 MB | **Most phones from 2017 onwards — start here** |
-| `app-release.apk` | 57.5 MB | Not sure / any phone (works on every CPU type) |
-| `app-armeabi-v7a-release.apk` | 18.2 MB | Older 32-bit phones |
-| `app-x86_64-release.apk` | 21.7 MB | Emulators / x86 tablets |
+| `app-arm64-v8a-release.apk` | 20.3 MB | **Most phones from 2017 onwards — start here** |
+| `app-release.apk` | 57.8 MB | Not sure / any phone (works on every CPU type) |
+| `app-armeabi-v7a-release.apk` | 18.3 MB | Older 32-bit phones |
+| `app-x86_64-release.apk` | 21.8 MB | Emulators / x86 tablets |
 
 Requires **Android 7.0 (API 24)** or newer.
 
@@ -54,6 +55,15 @@ This is normal for any app installed outside a store. You can revoke that permis
   the app reverses the back order and pairs F1↔B1, F2↔B2 automatically
 - Reorder by drag, rotate, re-crop, change filter, delete, share a page as an image
 
+### Organising
+- **Folders** — create, rename, delete; a document belongs to one folder or none
+- **Tags** — free-form labels, with suggestions from tags you already use
+- **Favourites** — star a document and filter down to only those
+- **Search** — matches document name, note text and tags as you type
+- **Notes** — a short note per document, shown on its card
+- **Trash** — deleting is undoable; restore or empty the trash explicitly
+- Folder, tag and search filters combine
+
 ### Output
 - **True A4** PDF — the page box is exactly 595.28 × 841.89 pt (also A5, Letter, Legal)
 - Fit / Fill / Stretch fitting, 0–15 mm margins, optional page numbers
@@ -87,7 +97,7 @@ See the [privacy policy](https://hypergrx7-droid.github.io/PAGE-PERFETT/privacy.
 
 - **No OCR.** This is a scanner, not a text extractor.
 - No cloud sync, no accounts, no analytics.
-- No folders, tags, app lock or encrypted vault.
+- No app lock or encrypted vault.
 - No password-protected PDF output.
 - No live edge overlay on the preview (detection runs on the captured frame).
 
