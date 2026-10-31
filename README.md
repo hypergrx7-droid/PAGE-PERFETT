@@ -108,13 +108,20 @@ to hold back.
 - One tap opens the exported PDF in whichever viewer you already have
 
 ### Staying up to date
-- The app checks one small `version.json` at launch
+- The app checks one small `version.json` at launch, and again every time it
+  returns to the foreground — a phone left open for days still sees new releases
+- Two manifest hosts are tried: the Pages URL, then the same file straight from
+  the repository, so a blocked or stale Pages host cannot hide an update
 - If a newer build exists, the whole UI is replaced by an update screen — no
   "later" button, so nobody is left on an old build
 - The APK downloads inside the app with a progress bar, then Android's own
   installer takes over. Documents are kept.
+- About → **Check for updates** runs the same check by hand and states the
+  result; About also shows the build number
 - Offline or server down? The app opens normally. A network check must never
   block a scanner.
+- A build that cannot read its own version number is never nagged: no version,
+  no comparison, no false update.
 
 ---
 
