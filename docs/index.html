@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PagePerfect — Free Document Scanner, No Ads, No Subscription</title>
+<meta name="description" content="Free document scanner for Android. Auto crop, auto lighting, both-side scan, exact A4 PDF, ID card scan. No ads, no subscription, no account. 100% offline.">
+<meta name="theme-color" content="#0b1020">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📄</text></svg>">
+<style>
+  :root{
+    --bg:#0b1020; --bg2:#121a33; --card:#161f3d; --line:#243055;
+    --text:#e8edff; --muted:#9aa6c9; --accent:#4f7cff; --accent2:#22d3a6;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Inter,sans-serif;
+    background:var(--bg); color:var(--text); line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+
+  /* nav */
+  nav{position:sticky;top:0;z-index:50;background:rgba(11,16,32,.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+  .brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:18px}
+  .logo{width:32px;height:32px;border-radius:9px;background:linear-gradient(135deg,var(--accent),var(--accent2));display:grid;place-items:center;font-size:17px}
+  nav .links{display:flex;gap:24px;font-size:14px;color:var(--muted)}
+  nav .links a:hover{color:var(--text)}
+  @media(max-width:640px){nav .links{display:none}}
+
+  /* hero */
+  header{padding:72px 0 56px;background:
+    radial-gradient(900px 400px at 15% -10%, rgba(79,124,255,.22), transparent 60%),
+    radial-gradient(700px 380px at 85% 0%, rgba(34,211,166,.14), transparent 60%)}
+  .hero{display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:center}
+  @media(max-width:860px){.hero{grid-template-columns:1fr;gap:32px}}
+  .pill{display:inline-flex;align-items:center;gap:8px;font-size:13px;color:var(--accent2);
+    border:1px solid rgba(34,211,166,.35);background:rgba(34,211,166,.08);padding:6px 14px;border-radius:999px;margin-bottom:20px}
+  h1{font-size:clamp(32px,5vw,54px);line-height:1.1;letter-spacing:-1.5px;font-weight:800}
+  h1 span{background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .sub{color:var(--muted);font-size:17px;margin-top:18px;max-width:520px}
+  .cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
+  .btn{display:inline-flex;align-items:center;gap:10px;padding:14px 26px;border-radius:12px;font-weight:600;font-size:15px;transition:.18s}
+  .btn-primary{background:linear-gradient(135deg,var(--accent),#6b8dff);color:#fff;box-shadow:0 8px 28px rgba(79,124,255,.35)}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 34px rgba(79,124,255,.45)}
+  .btn-ghost{border:1px solid var(--line);background:var(--card);color:var(--text)}
+  .btn-ghost:hover{border-color:var(--accent)}
+  .meta{display:flex;gap:20px;flex-wrap:wrap;margin-top:22px;font-size:13px;color:var(--muted)}
+  .meta b{color:var(--text)}
+
+  /* phone mock */
+  .phone{width:270px;height:540px;margin:0 auto;border-radius:34px;border:8px solid #1d2745;
+    background:linear-gradient(160deg,#0e1530,#182349);position:relative;overflow:hidden;
+    box-shadow:0 30px 70px rgba(0,0,0,.55)}
+  .phone .notch{position:absolute;top:10px;left:50%;transform:translateX(-50%);width:80px;height:16px;border-radius:10px;background:#0b1020}
+  .phone .screen{position:absolute;inset:26px 14px 14px;border-radius:18px;background:#f6f7fb;color:#0b1020;padding:14px;display:flex;flex-direction:column;gap:10px}
+  .doc{background:#fff;border:1px solid #dde2f0;border-radius:8px;height:74px;position:relative;overflow:hidden}
+  .doc::before{content:"";position:absolute;inset:9px;border-radius:3px;background:repeating-linear-gradient(#dfe5f5 0 4px,transparent 4px 9px)}
+  .doc .corner{position:absolute;width:12px;height:12px;border:2px solid var(--accent)}
+  .doc .c1{top:4px;left:4px;border-right:0;border-bottom:0}
+  .doc .c2{top:4px;right:4px;border-left:0;border-bottom:0}
+  .doc .c3{bottom:4px;left:4px;border-right:0;border-top:0}
+  .doc .c4{bottom:4px;right:4px;border-left:0;border-top:0}
+  .chiprow{display:flex;gap:6px;flex-wrap:wrap}
+  .chip{font-size:9px;padding:4px 9px;border-radius:999px;background:#e6ebfa;color:#3d4a70;font-weight:600}
+  .chip.on{background:var(--accent);color:#fff}
+
+  /* sections */
+  section{padding:64px 0}
+  .kicker{color:var(--accent2);font-size:13px;font-weight:700;letter-spacing:1.6px;text-transform:uppercase}
+  h2{font-size:clamp(24px,3.4vw,36px);letter-spacing:-.8px;margin-top:8px;font-weight:800}
+  .lead{color:var(--muted);margin-top:12px;max-width:620px}
+
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px;margin-top:36px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px;transition:.2s}
+  .card:hover{border-color:var(--accent);transform:translateY(-3px)}
+  .card .ico{font-size:24px;margin-bottom:12px}
+  .card h3{font-size:16px;margin-bottom:8px}
+  .card p{color:var(--muted);font-size:14px}
+
+  .compare{width:100%;border-collapse:collapse;margin-top:32px;font-size:14px;overflow:hidden;border-radius:14px}
+  .compare th,.compare td{padding:14px 16px;text-align:left;border-bottom:1px solid var(--line)}
+  .compare thead th{background:var(--bg2);font-size:13px;color:var(--muted);font-weight:600}
+  .compare tbody tr{background:var(--card)}
+  .compare .yes{color:var(--accent2);font-weight:700}
+  .compare .no{color:#ff6b81;font-weight:700}
+  @media(max-width:600px){.compare{font-size:12px}.compare th,.compare td{padding:10px 8px}}
+
+  .privacy{border:1px solid rgba(34,211,166,.3);background:rgba(34,211,166,.06);border-radius:16px;padding:32px;margin-top:32px}
+  .privacy h3{color:var(--accent2);margin-bottom:12px;font-size:18px}
+  .privacy ul{margin:0;padding-left:20px;color:var(--muted);font-size:14px}
+  .privacy li{margin:6px 0}
+
+  details{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 20px;margin-top:10px}
+  summary{cursor:pointer;font-weight:600;font-size:15px}
+  details p{color:var(--muted);font-size:14px;margin-top:10px}
+
+  footer{border-top:1px solid var(--line);padding:36px 0;color:var(--muted);font-size:13px}
+  footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+  footer a:hover{color:var(--text)}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="brand"><div class="logo">📄</div> PagePerfect</div>
+    <div class="links">
+      <a href="#features">Features</a>
+      <a href="#compare">Compare</a>
+      <a href="#download">Download</a>
+      <a href="#faq">FAQ</a>
+      <a href="privacy.html">Privacy</a>
+    </div>
+  </div>
+</nav>
+
+<header>
+  <div class="wrap hero">
+    <div>
+      <div class="pill">● 100% free · no ads · no account</div>
+      <h1>Scan any paper.<br>Get a <span>perfect A4 PDF</span>.</h1>
+      <p class="sub">
+        Auto crop, auto lighting, both-side scanning and ID cards — everything a document
+        scanner should do, with nothing to pay and nothing to sign up for.
+      </p>
+      <div class="cta">
+        <a class="btn btn-primary" href="#download">⬇ Download APK</a>
+        <a class="btn btn-ghost" href="#features">See features</a>
+      </div>
+      <div class="meta">
+        <span><b>20 MB</b> arm64 APK</span>
+        <span><b>Android 7.0+</b></span>
+        <span><b>0</b> trackers</span>
+        <span><b>0</b> network calls</span>
+      </div>
+    </div>
+
+    <div class="phone">
+      <div class="notch"></div>
+      <div class="screen">
+        <div class="chiprow">
+          <span class="chip on">Auto</span>
+          <span class="chip">A4</span>
+          <span class="chip">ID</span>
+          <span class="chip">Duplex</span>
+        </div>
+        <div class="doc" style="height:150px">
+          <span class="corner c1"></span><span class="corner c2"></span>
+          <span class="corner c3"></span><span class="corner c4"></span>
+        </div>
+        <div class="doc"><span class="corner c1"></span><span class="corner c2"></span><span class="corner c3"></span><span class="corner c4"></span></div>
+        <div class="chiprow" style="margin-top:auto">
+          <span class="chip">Magic</span>
+          <span class="chip on">Auto light</span>
+          <span class="chip">B&amp;W</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section id="features">
+  <div class="wrap">
+    <div class="kicker">What it does</div>
+    <h2>Everything, and it costs nothing</h2>
+    <p class="lead">No watermark. No page limit. No "upgrade to export". The features other scanners lock behind a subscription are just... here.</p>
+
+    <div class="grid">
+      <div class="card"><div class="ico">📐</div><h3>Auto crop &amp; straighten</h3><p>Finds the page edges in real time, fixes perspective, and lets you drag all 8 handles if it guesses wrong.</p></div>
+      <div class="card"><div class="ico">💡</div><h3>Auto lighting</h3><p>Removes shadows and uneven light, whitens the paper, sharpens the text. One tap.</p></div>
+      <div class="card"><div class="ico">📄</div><h3>Exact A4 output</h3><p>Every page is a true 595×842 pt A4 PDF at 300 DPI — prints correctly instead of coming out tiny or stretched.</p></div>
+      <div class="card"><div class="ico">🔄</div><h3>Both-side scanning</h3><p>Scan all fronts, flip the stack, scan all backs — it pairs them automatically. Or use the flip prompt for short documents.</p></div>
+      <div class="card"><div class="ico">🪪</div><h3>ID card mode</h3><p>Aadhaar, PAN, licence, passport. Scan the front, scan the back — both land on one A4 sheet at real card size, with cut guides.</p></div>
+      <div class="card"><div class="ico">🔒</div><h3>Works offline</h3><p>No account, no cloud, no analytics. Your documents never leave the phone. Ever.</p></div>
+      <div class="card"><div class="ico">🗂️</div><h3>Page tools</h3><p>Reorder by drag, rotate, re-crop, change the filter, delete. No page limits.</p></div>
+      <div class="card"><div class="ico">🖥️</div><h3>Read &amp; share</h3><p>Pinch-zoom page reader, then one tap to open the PDF in any viewer you already have.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="compare">
+  <div class="wrap">
+    <div class="kicker">Honest comparison</div>
+    <h2>What you normally pay for</h2>
+    <p class="lead">The big scanner apps make money by holding basic things hostage. This one doesn't.</p>
+
+    <table class="compare">
+      <thead>
+        <tr><th>Feature</th><th>Typical scanner app</th><th>PagePerfect</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>PDF export without watermark</td><td class="no">Subscription</td><td class="yes">Free</td></tr>
+        <tr><td>Page limit</td><td class="no">Capped</td><td class="yes">Unlimited</td></tr>
+        <tr><td>Both-side (duplex) scan</td><td class="no">Premium</td><td class="yes">Free</td></tr>
+        <tr><td>ID card 2-up sheet</td><td class="no">Premium</td><td class="yes">Free</td></tr>
+        <tr><td>True A4 print size</td><td class="no">Often broken</td><td class="yes">Always</td></tr>
+        <tr><td>Account required</td><td class="no">Yes</td><td class="yes">Never</td></tr>
+        <tr><td>Ads</td><td class="no">Yes</td><td class="yes">None</td></tr>
+        <tr><td>Uploads your documents</td><td class="no">Usually</td><td class="yes">Never</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="privacy">
+      <h3>🔒 Privacy in one sentence</h3>
+      <p style="color:var(--muted);font-size:15px">
+        The app has no internet permission at all. It physically cannot send your documents anywhere.
+      </p>
+      <ul>
+        <li>No account, no login, no email</li>
+        <li>No analytics, no crash reporting SDKs</li>
+        <li>No ads, no advertising ID</li>
+        <li>All images and PDFs stay in the app's private storage on your phone</li>
+        <li>Nothing leaves the device — not even a crash report</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="download">
+  <div class="wrap">
+    <div class="kicker">Download</div>
+    <h2>Get the APK</h2>
+    <p class="lead">Pick the build that matches your phone. If you're not sure, take the universal one.</p>
+
+    <div class="grid">
+      <div class="card">
+        <h3>ARM64 · 20.2 MB</h3>
+        <p style="margin-bottom:16px">Phones from ~2017 onwards. Smallest download — start here.</p>
+        <a class="btn btn-primary" href="https://github.com/hypergrx7-droid/PAGE-PERFETT/releases/latest">Download</a>
+      </div>
+      <div class="card">
+        <h3>Universal · 57.5 MB</h3>
+        <p style="margin-bottom:16px">Works on every Android phone, all CPU types. Slightly bigger.</p>
+        <a class="btn btn-ghost" href="https://github.com/hypergrx7-droid/PAGE-PERFETT/releases/latest">Download</a>
+      </div>
+      <div class="card">
+        <h3>ARMv7 · 18.2 MB</h3>
+        <p style="margin-bottom:16px">32-bit devices, older budget phones.</p>
+        <a class="btn btn-ghost" href="https://github.com/hypergrx7-droid/PAGE-PERFETT/releases/latest">Download</a>
+      </div>
+    </div>
+
+    <div style="margin-top:32px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:24px">
+      <h3 style="font-size:16px;margin-bottom:12px">How to install</h3>
+      <ol style="color:var(--muted);font-size:14px;padding-left:20px">
+        <li>Tap the download link and wait for the file to finish.</li>
+        <li>Open it. Android will say "For your security, your phone is not allowed to install unknown apps from this source."</li>
+        <li>Tap <b>Settings</b> → enable <b>Allow from this source</b> → go back.</li>
+        <li>Tap <b>Install</b>.</li>
+      </ol>
+      <p style="color:var(--muted);font-size:13px;margin-top:12px">
+        This is normal for any app installed outside a store. You can revoke the permission right after installing.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="wrap">
+    <div class="kicker">FAQ</div>
+    <h2>Questions</h2>
+
+    <details><summary>Is it really free? What's the catch?</summary>
+      <p>No catch. There is no paid tier, no ads, no account and no data collection, so there is nothing to monetise. It is built and published by an independent developer.</p></details>
+
+    <details><summary>Why isn't it on the Play Store?</summary>
+      <p>Google charges a one-time developer registration fee. Until that's paid, the APK is published directly on GitHub Releases. You get the exact same app.</p></details>
+
+    <details><summary>Do you collect my documents?</summary>
+      <p>No. The app doesn't even request the internet permission, so it cannot transmit anything. Everything stays in local storage on your device.</p></details>
+
+    <details><summary>Will it work on my phone?</summary>
+      <p>Android 7.0 (API 24) and newer. That covers essentially every phone still in use.</p></details>
+
+    <details><summary>Is the APK safe?</summary>
+      <p>Every APK here is built from the same fixed source tree by an automated pipeline, then checked before publishing: the package id must be <code>com.pageperfect.app</code> and the app must not declare the <code>INTERNET</code> permission. You can verify that yourself on any Android phone with any APK inspector.</p></details>
+
+    <details><summary>Does it scan both sides of a page?</summary>
+      <p>Yes. Two modes: a flip prompt for short documents, and batch mode where you scan all fronts, flip the stack, then scan all backs — it pairs them in the right order automatically.</p></details>
+
+    <details><summary>Can I get true A4 for printing?</summary>
+      <p>Yes, that's the whole point. The PDF page box is exactly 595.28 × 841.89 pt (A4 in PostScript points), so the printer receives a real A4 page instead of a bitmap it has to scale down.</p></details>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>© <span id="y">2026</span> PagePerfect · Free · no ads · no tracking</div>
+    <div>
+      <a href="privacy.html">Privacy</a> ·
+      <a href="https://github.com/hypergrx7-droid/PAGE-PERFETT/releases">Releases</a>
+    </div>
+  </div>
+</footer>
+
+<script>document.getElementById('y').textContent = new Date().getFullYear();</script>
+</body>
+</html>
