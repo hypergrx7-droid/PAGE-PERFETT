@@ -12,7 +12,7 @@ folders · tags · search · trash · self-updating.
 
 **[→ Get the latest APK](https://github.com/hypergrx7-droid/PAGE-PERFETT/releases/latest/download/app-release.apk)**
 
-One file, every phone. `app-release.apk`, 42.5 MB, Android 7.0 (API 24)+,
+One file, every phone. `app-release.apk`, 42.6 MB, Android 7.0 (API 24)+,
 64-bit and 32-bit ARM.
 
 Install: tap the download → Android asks to allow "Install unknown apps" → allow → Install.
@@ -47,7 +47,7 @@ to hold back.
 
 ---
 
-## What v1.2 does
+## What v1.3 does
 
 ### Scanning
 - Camera preview with a framing guide, grid, torch and tap-to-focus
@@ -71,6 +71,16 @@ to hold back.
 - **Batch mode** — scan every front, flip the whole stack, scan every back; the app
   reverses the back order and pairs F1↔B1, F2↔B2 automatically
 - Reorder pages by drag, rotate, re-crop, change filter, delete
+
+### Reviewing a scan
+- Every page of a document in one list, in order, drag to reorder
+- **Six actions at the bottom, same as the reference scanner:**
+  **Back** · **Edit** · **Edit all** · **Open PDF** · **Share** · **Save**
+- **Edit** re-crops the selected page; tap a page to select it
+- **Edit all** applies one filter — and optionally a 90° turn — to every page at once
+- **Open PDF** builds the PDF and hands it to your viewer
+- **Share** sends the PDF to WhatsApp, Gmail, Drive, anything
+- **Save** writes it to `Download/PagePerfect/` on the phone itself
 
 ### Output
 - **True A4** PDF: the page box is exactly 595.28 × 841.89 pt (also A5, Letter, Legal)
@@ -108,7 +118,7 @@ to hold back.
 
 ---
 
-## Not in v1.2 (deliberately)
+## Not in v1.3 (deliberately)
 
 - **No OCR.** This is a scanner, not a text extractor.
 - No cloud sync, no accounts, no analytics — by design, not as a limitation.
