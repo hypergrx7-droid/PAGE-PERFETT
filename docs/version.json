@@ -1,7 +1,7 @@
 {
-    "versionName":  "1.2.0",
-    "versionCode":  10200,
+    "versionName":  "1.3.0",
+    "versionCode":  10300,
     "apkUrl":  "https://github.com/hypergrx7-droid/PAGE-PERFETT/releases/latest/download/app-release.apk",
-    "notes":  "One APK for every phone. In-app updates: future versions install themselves, no browser needed. Plus folders, tags, favourites, search, notes and trash.",
-    "releasedAt":  "2026-10-31T10:55:58Z"
+    "notes":  "New scan review screen with the six actions: Back, Edit, Edit all, Open PDF, Share and Save. Save writes the PDF straight into Download/PagePerfect. Edit all applies one filter, and an optional 90-degree turn, to every page at once.",
+    "releasedAt":  "2026-10-31T14:05:51Z"
 }
